@@ -1,3 +1,62 @@
-<p>
-  transit works!
-</p>
+<ul>
+  <li ><button class="btn-link">Ver Rutas</button></li>
+  <li><button class="btn-link">Estados</button></li>
+  <li><button class="btn-link">Plantillas</button></li>
+  <li><button class="btn-link">Reportes</button></li>
+</ul>
+<div class="filter-pane">
+    <label class="right-pane">Filtrar por:</label>
+    <select class="filter">
+        <option value="A-Z" selected>A-Z</option>
+        <option value="Z-A">Z-A</option>
+    </select>
+    <select class="filter">
+        <option value="Hora" selected>Hora</option>
+        <option value="Empty"></option>
+    </select>
+    <select class="filter">
+        <option value="ID" selected>ID</option>
+        <option value="Ruta">Ruta</option>
+    </select>
+    <input class="filter"> 
+    <button class="btn-search glyphicon glyphicon-search"></button>
+</div>
+
+<table class="table table-bordered table-responsive">
+  <tr>
+    <th bgcolor="#D8D8D8">
+      <i>Nombre de Chofer</i>
+    </th>
+    <th bgcolor="#D8D8D8">
+      <i># Camión</i>     
+    </th>
+    <th bgcolor="#D8D8D8">
+      <i>Salida</i>  
+    </th>
+    <th bgcolor="#D8D8D8">
+      <i>Llegada</i>  
+    </th>s
+    <th bgcolor="#D8D8D8">
+      <i>Descripción</i>   
+    </th>
+    <th bgcolor="#D8D8D8">
+      <i># Camion</i> 
+    </th>
+  </tr>
+  <tr>
+    <td bgcolor="#424242"> <font color="white">Juan</font> </td>
+    <td bgcolor="#424242"><font color="white">546456</font> </td>
+    <td bgcolor="#424242"> <font color="white">08:00 am</font> </td>
+    <td bgcolor="#424242"> <font color="white">05:00 pm</font> </td>
+    <td bgcolor="#424242"> <font color="white">LM-89</font> </td>
+    <td bgcolor="#424242"> <font color="white">12345</font> </td>
+  </tr>
+  <tr>
+      <td bgcolor="#424242"> <font color="white">Pedro</font> </td>
+      <td bgcolor="#424242"><font color="white">4255324</font> </td>
+      <td bgcolor="#424242"> <font color="white">08:00 am</font> </td>
+      <td bgcolor="#424242"> <font color="white">05:00 pm</font> </td>
+      <td bgcolor="#424242"> <font color="white">LM-89</font> </td>
+      <td bgcolor="#424242"> <font color="white">12345</font> </td>
+  </tr>
+</table>
