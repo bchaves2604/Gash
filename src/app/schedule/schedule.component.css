@@ -2,15 +2,69 @@ body {
     margin: 0;
 }
 
+.header-text {
+    color: white;
+    text-align: right;
+    width: 50%;
+    height: 100%;
+    float: right;
+    margin-top: 8.5px;
+}
+
+.header-text h2 {
+    width: 100%;
+    height: 100%;
+}
+
+.logo {
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.navbar-header {
+    width: 100%;
+    height: 100%;
+}
+
+.navbar-size {
+    margin-bottom: 0px;
+}
+
+.navbar {
+    border-radius: 0px;
+}
+
 ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 10%;
+    background-color: white;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    text-align: center; 
+}
+
+tr {
+    width: 10%;
+}
+
+.right-bar {
+    left: 0%;
     list-style-type: none;
     margin: 0;
     padding: 0;
     width: 15%;
     background-color: white;
-    position: fixed;
     height: 100%;
-    overflow: auto;
+    
+}
+
+.table-content {
+    right: 0%;
+    width: 85%;
 }
 
 li a {
@@ -31,27 +85,45 @@ li a:hover:not(.active) {
 }
 
 .right-pane{
-    margin-left:25%;
+    margin-right: 5px;
     padding:1px 16px;
 }
 
-.filter-pane{
+.filter-pane-table-view {
     background-color: rgb(167, 166, 166);
     color: white;
-    margin-top: 0px;
-    
+    top: 0%;
+    width: 92%;
+    margin-left: 10%;
+    text-align: center;
 }
 
-.filter{
+.table {
+    text-align: center;
+}
+
+.filter-pane-table-view .filter {
+    width: 15%;
     color: black;
     border-radius: 90px;
-    width: 200px;
+    border: none;
+    height: 20px;
+    text-align: center;
+    margin-top:4px;
+    text-align-last: center;
+    margin-right: 8px;
 }
 
-.table-size{
-    width: 85%;
-    margin-left: 15%;
-    margin-right: 0px;
+th{
+    text-align: center;
+    color: black;
+}
+
+.filter-pane-table-view button {
+    width: 6%;
+    border: none;  
+    height: 20px; 
+    margin-top:4px;
 }
 
 .btn-search{
