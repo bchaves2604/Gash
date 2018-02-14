@@ -1,0 +1,10 @@
+.buttonHolder{
+    display: block;
+    text-align: center;
+    margin: 100px
+}
+
+.button-size{
+    font-size: 80px;
+    border-radius: 40px;
+}

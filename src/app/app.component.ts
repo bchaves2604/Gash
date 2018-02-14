@@ -13,9 +13,4 @@ export class AppComponent {
   constructor(private router: Router) {
     
   }
-
-  showSchedule(){
-    console.log("switching views")
-    this.router.navigateByUrl("/schedule");
-  }
 }
