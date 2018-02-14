@@ -1,18 +1,23 @@
-<nav class="navbar navbar-inverse size">
+<nav class="navbar navbar-inverse navbar-size">
     <div class="container-fluid">
       <div class="navbar-header">
-        <img src="../assets/images/gashArtboard.jpg">
+        <div class="logo"><img height="80" src="../assets/images/gashArtboard.png"></div>
+        <div class="header-text"><h2>Control de Horarios</h2></div>
       </div>
-    </div>  
+    </div>
   </nav>
-<ul>
-  <li ><button class="btn-link">Agregar Chofer</button></li>
-  <li><button class="btn-link">Crear Horario</button></li>
-  <li><button class="btn-link">Plantillas</button></li>
-  <li><button class="btn-link">Reportes</button></li>
-  <li><button class="btn-link">Horas extra</button></li>
-</ul>
-<div class="filter-pane">
+<div class="right-bar">
+  <ul>
+    <li ><button class="btn-link">Agregar Chofer</button></li>
+    <li><button class="btn-link">Crear Horario</button></li>
+    <li><button class="btn-link">Platillas</button></li>
+    <li><button class="btn-link">Reportes</button></li>
+    <li><button class="btn-link">Horas Extra</button></li>
+  </ul>
+</div>
+
+<div class="filter-pane-table-view">
+  <div class="search-bar">
     <label class="right-pane">Filtrar por:</label>
     <select class="filter">
         <option value="A-Z" selected>A-Z</option>
@@ -26,45 +31,49 @@
         <option value="ID" selected>ID</option>
         <option value="Ruta">Ruta</option>
     </select>
-    <input class="filter"> 
-    <button class="btn btn-xs btn-search glyphicon glyphicon-search"></button>
+    <input class="filter" placeholder="Search"> 
+    <button class="btn-search glyphicon glyphicon-search"></button>
+  </div>
+
+    <table class="table table-bordered table-responsive table-size">
+        <tbody>
+          <tr>
+            <th bgcolor="#D8D8D8">
+              <i>Nombre de Chofer</i>
+            </th>
+            <th bgcolor="#D8D8D8">
+              <i># ID</i>     
+            </th>
+            <th bgcolor="#D8D8D8">
+              <i>Entrada</i>  
+            </th>
+            <th bgcolor="#D8D8D8">
+              <i>Salida</i>  
+            </th>
+            <th bgcolor="#D8D8D8">
+              <i># Ruta</i>   
+            </th>
+            <th bgcolor="#D8D8D8">
+              <i># Camión</i> 
+            </th>
+          </tr>
+          <tr>
+            <td bgcolor="#424242"> <font color="white">Juan</font> </td>
+            <td bgcolor="#424242"><font color="white">546456</font> </td>
+            <td bgcolor="#424242"> <font color="white">08:00 am</font> </td>
+            <td bgcolor="#424242"> <font color="white">05:00 pm</font> </td>
+            <td bgcolor="#424242"> <font color="white">LM-89</font> </td>
+            <td bgcolor="#424242"> <font color="white">12345</font> </td>
+          </tr>
+          <tr>
+              <td bgcolor="#424242"> <font color="white">Pedro</font> </td>
+              <td bgcolor="#424242"><font color="white">4255324</font> </td>
+              <td bgcolor="#424242"> <font color="white">08:00 am</font> </td>
+              <td bgcolor="#424242"> <font color="white">05:00 pm</font> </td>
+              <td bgcolor="#424242"> <font color="white">LM-89</font> </td>
+              <td bgcolor="#424242"> <font color="white">12345</font> </td>
+          </tr>
+        </tbody>
+    </table>
 </div>
 
-<table class="table table-bordered table-size">
-  <tr>
-    <th bgcolor="#D8D8D8">
-      <i>Nombre de Chofer</i>
-    </th>
-    <th bgcolor="#D8D8D8">
-      <i># ID</i>     
-    </th>
-    <th bgcolor="#D8D8D8">
-      <i>Entrada</i>  
-    </th>
-    <th bgcolor="#D8D8D8">
-      <i>Salida</i>  
-    </th>
-    <th bgcolor="#D8D8D8">
-      <i># Ruta</i>   
-    </th>
-    <th bgcolor="#D8D8D8">
-      <i># Camion</i> 
-    </th>
-  </tr>
-  <tr>
-    <td bgcolor="#424242"> <font color="white">Juan</font> </td>
-    <td bgcolor="#424242"><font color="white">546456</font> </td>
-    <td bgcolor="#424242"> <font color="white">08:00 am</font> </td>
-    <td bgcolor="#424242"> <font color="white">05:00 pm</font> </td>
-    <td bgcolor="#424242"> <font color="white">LM-89</font> </td>
-    <td bgcolor="#424242"> <font color="white">12345</font> </td>
-  </tr>
-  <tr>
-    <td bgcolor="#424242"> <font color="white">Pedro</font> </td>
-    <td bgcolor="#424242"><font color="white">4255324</font> </td>
-    <td bgcolor="#424242"> <font color="white">08:00 am</font> </td>
-    <td bgcolor="#424242"> <font color="white">05:00 pm</font> </td>
-    <td bgcolor="#424242"> <font color="white">LM-89</font> </td>
-    <td bgcolor="#424242"> <font color="white">12345</font> </td>
-  </tr>
-</table>
