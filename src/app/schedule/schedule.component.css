@@ -85,23 +85,13 @@ li a:hover:not(.active) {
 }
 
 .right-pane{
-<<<<<<< HEAD
-    margin-left:25%;
-    padding:1% 8%;
-=======
     margin-right: 5px;
     padding:1px 16px;
->>>>>>> alfredoswork
 }
 
 .filter-pane-table-view {
     background-color: rgb(167, 166, 166);
     color: white;
-<<<<<<< HEAD
-    margin-top: 0px;
-    display: block;
-    margin-left: 18%;
-=======
     top: 0%;
     width: 92%;
     margin-left: 10%;
@@ -110,31 +100,12 @@ li a:hover:not(.active) {
 
 .table {
     text-align: center;
->>>>>>> alfredoswork
 }
 
 .filter-pane-table-view .filter {
     width: 15%;
     color: black;
     border-radius: 90px;
-<<<<<<< HEAD
-    width: 12%;
-   
-}
-
-.table-size{
-    margin-left: 19%;
-    width: 81%;
-=======
-    border: none;
-    height: 20px;
-    text-align: center;
-    margin-top:4px;
-    text-align-last: center;
-    margin-right: 8px;
-}
-
-th{
     text-align: center;
     color: black;
 }
@@ -144,7 +115,6 @@ th{
     border: none;  
     height: 20px; 
     margin-top:4px;
->>>>>>> alfredoswork
 }
 
 .btn-search{
