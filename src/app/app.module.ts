@@ -9,9 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MenuComponent } from './menu/menu.component';
 import { TransitComponent } from './transit/transit.component';
 
-const myRoot: Routes = [
-  { path: 'register', component: MenuComponent }
-];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,8 +19,8 @@ const myRoot: Routes = [
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    RouterModule.forRoot(myRoot)
+    AppRoutingModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
