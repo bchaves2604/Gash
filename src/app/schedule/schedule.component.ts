@@ -7,6 +7,8 @@ import {Schedules} from '../model/schedule/grid-schedule-mock';
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.css']
 })
+
+
 export class ScheduleComponent implements OnInit {
 
   schedules= Schedules;

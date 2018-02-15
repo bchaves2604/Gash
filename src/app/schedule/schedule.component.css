@@ -129,8 +129,18 @@ th{
 .btn-search{
     background-color: cornflowerblue;
     border-radius: 60px;
+    color: white;
 }
 
 .size{
     margin-bottom: 0px;
+}
+
+.modal-driver{
+    color: white;
+    background-color: black;
+}
+
+.close-modal-button{
+    color: white;
 }
