@@ -56,21 +56,13 @@
               <i># Camión</i> 
             </th>
           </tr>
-          <tr>
-            <td bgcolor="#424242"> <font color="white">Juan</font> </td>
-            <td bgcolor="#424242"><font color="white">546456</font> </td>
-            <td bgcolor="#424242"> <font color="white">08:00 am</font> </td>
-            <td bgcolor="#424242"> <font color="white">05:00 pm</font> </td>
-            <td bgcolor="#424242"> <font color="white">LM-89</font> </td>
-            <td bgcolor="#424242"> <font color="white">12345</font> </td>
-          </tr>
-          <tr>
-              <td bgcolor="#424242"> <font color="white">Pedro</font> </td>
-              <td bgcolor="#424242"><font color="white">4255324</font> </td>
-              <td bgcolor="#424242"> <font color="white">08:00 am</font> </td>
-              <td bgcolor="#424242"> <font color="white">05:00 pm</font> </td>
-              <td bgcolor="#424242"> <font color="white">LM-89</font> </td>
-              <td bgcolor="#424242"> <font color="white">12345</font> </td>
+          <tr *ngFor="let transit of transits">
+            <td bgcolor="#424242" [ngStyle]="{'color': getColor(transit.arrive)}">{{transit.name}}</td>
+            <td bgcolor="#424242" [ngStyle]="{'color': getColor(transit.arrive)}">{{transit.truckId}}</td>
+            <td bgcolor="#424242" [ngStyle]="{'color': getColor(transit.arrive)}">{{transit.out}}</td>
+            <td bgcolor="#424242" [ngStyle]="{'color': getColor(transit.arrive)}">{{transit.arrive}}</td>
+            <td bgcolor="#424242" [ngStyle]="{'color': getColor(transit.arrive)}">{{transit.description}}</td>
+            <td bgcolor="#424242" [ngStyle]="{'color': getColor(transit.arrive)}">{{transit.truckNumber}}</td>
           </tr>
         </tbody>
     </table>

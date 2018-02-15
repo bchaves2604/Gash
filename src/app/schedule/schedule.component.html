@@ -10,7 +10,7 @@
   <ul>
     <li ><button class="btn-link">Agregar Chofer</button></li>
     <li><button class="btn-link">Crear Horario</button></li>
-    <li><button class="btn-link">Platillas</button></li>
+    <li><button class="btn-link">Plantillas</button></li>
     <li><button class="btn-link">Reportes</button></li>
     <li><button class="btn-link">Horas Extra</button></li>
   </ul>
@@ -57,21 +57,13 @@
               <i># Camión</i> 
             </th>
           </tr>
-          <tr>
-            <td bgcolor="#424242"> <font color="white">Juan</font> </td>
-            <td bgcolor="#424242"><font color="white">546456</font> </td>
-            <td bgcolor="#424242"> <font color="white">08:00 am</font> </td>
-            <td bgcolor="#424242"> <font color="white">05:00 pm</font> </td>
-            <td bgcolor="#424242"> <font color="white">LM-89</font> </td>
-            <td bgcolor="#424242"> <font color="white">12345</font> </td>
-          </tr>
-          <tr>
-              <td bgcolor="#424242"> <font color="white">Pedro</font> </td>
-              <td bgcolor="#424242"><font color="white">4255324</font> </td>
-              <td bgcolor="#424242"> <font color="white">08:00 am</font> </td>
-              <td bgcolor="#424242"> <font color="white">05:00 pm</font> </td>
-              <td bgcolor="#424242"> <font color="white">LM-89</font> </td>
-              <td bgcolor="#424242"> <font color="white">12345</font> </td>
+          <tr *ngFor="let schedule of schedules">
+            <td bgcolor="#424242" [ngStyle]="{'color': getColor(schedule.out)}">{{schedule.name}}</td>
+            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out)}">{{schedule.id}}</td>
+            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out)}">{{schedule.entrance}}</td>
+            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out)}">{{schedule.out}}</td>
+            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out)}">{{schedule.route}}</td>
+            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out)}">{{schedule.truck}}</td>
           </tr>
         </tbody>
     </table>
