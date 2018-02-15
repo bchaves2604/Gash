@@ -32,7 +32,7 @@ export class TransitComponent implements OnInit {
       //yellow
       return '#F4FA58'
     }
-    else if(hour<currentHour){
+    else if(hour<=currentHour){
       //red
       return '#FE2E2E'
     }
