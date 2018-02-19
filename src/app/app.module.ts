@@ -8,6 +8,7 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MenuComponent } from './menu/menu.component';
 import { TransitComponent } from './transit/transit.component';
+import { CreateScheduleComponent } from './create-schedule/create-schedule.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { TransitComponent } from './transit/transit.component';
     AppComponent,
     ScheduleComponent,
     MenuComponent,
-    TransitComponent
+    TransitComponent,
+    CreateScheduleComponent
   ],
   imports: [
     BrowserModule,
