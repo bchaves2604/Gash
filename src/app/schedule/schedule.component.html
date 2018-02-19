@@ -29,16 +29,16 @@
       </div>
       <div class="modal-body">
         <label>Nombre Completo</label>
-        <input class="form-control">
+        <input #driverName class="form-control">
         <label>Cedula de Identidad</label>
-        <input class="form-control" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+        <input #driverNid class="form-control" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
         <label>Nacimiento</label>
-        <input type="date" class="form-control">
+        <input #driverBirthDate type="date" class="form-control">
         <label>Número de teléfono</label>
-        <input class="form-control" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+        <input #driverPhoneNumber class="form-control" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default btn-search" data-dismiss="modal" >Agregar</button>
+        <button class="btn btn-default btn-search" data-dismiss="modal" (click)="addDriver(driverName.value, driverNid.value,driverBirthDate.value,driverPhoneNumber.value);" >Agregar</button>
       </div>
     </div>
 

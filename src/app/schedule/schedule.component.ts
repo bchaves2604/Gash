@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router'; 
 import {Schedules} from '../model/schedule/grid-schedule-mock';
+import {UserService} from '../user.service';
+import {Driver} from '../model/driver/driver';
 
 @Component({
   selector: 'app-schedule',
@@ -13,7 +15,7 @@ export class ScheduleComponent implements OnInit {
 
   schedules= Schedules;
 
-  constructor() {
+  constructor(private userService: UserService) {
     
   }
 
@@ -31,7 +33,6 @@ export class ScheduleComponent implements OnInit {
     }
     var diff=Math.abs(currentHour-hour);
 
-    console.log('hour: ' + hour + ' '+'currentHour: '+ currentHour + ' ' +'diff: ' + diff);
     if(hour>currentHour && diff>1){
       //green
       return '#04B45F'
@@ -39,13 +40,23 @@ export class ScheduleComponent implements OnInit {
     
     else if(hour>currentHour && diff<=1){
       //yellow
-      console.log('yellow');
       return '#F4FA58'
     }
     else if(hour<=currentHour){
       //red
       return '#FE2E2E'
     }
+  }
+
+  addDriver(driverName: string, driverNid: string, driverBirthDate: string, driverPhoneNumber: string){
+    driverName.trim();
+    var driver= new Driver();
+    driver.driverNationalId=driverNid;
+    driver.driverName=driverName;
+    driver.driverBirthDate=driverBirthDate;
+    driver.driverTelephoneNumber=driverPhoneNumber;
+    this.userService.addDriver(driver)
+      .subscribe(response => console.log(response));
   }
 
 
