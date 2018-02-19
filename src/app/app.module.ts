@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MenuComponent } from './menu/menu.component';
 import { TransitComponent } from './transit/transit.component';
 import { UserService } from './user.service';
+import { CreateScheduleComponent } from './create-schedule/create-schedule.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { UserService } from './user.service';
     AppComponent,
     ScheduleComponent,
     MenuComponent,
-    TransitComponent
+    TransitComponent,
+    CreateScheduleComponent
   ],
   imports: [
     BrowserModule,
