@@ -5,8 +5,8 @@ export class Driver{
     invoiceId: Number;
     driverNationalId: string
     driverName: string 
-    driverBirthDate: string
     driverTelephoneNumber: string
+    driverBirthDate: string
     driverLastUpdatedDateTime: string
 
     constructor(){

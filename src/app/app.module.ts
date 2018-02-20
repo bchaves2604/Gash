@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule }    from '@angular/common/http';
- 
 
 
 import { AppComponent } from './app.component';
@@ -12,6 +11,7 @@ import { MenuComponent } from './menu/menu.component';
 import { TransitComponent } from './transit/transit.component';
 import { UserService } from './user.service';
 import { CreateScheduleComponent } from './create-schedule/create-schedule.component';
+
 
 
 @NgModule({
@@ -25,7 +25,7 @@ import { CreateScheduleComponent } from './create-schedule/create-schedule.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

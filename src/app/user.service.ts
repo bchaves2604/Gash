@@ -20,13 +20,9 @@ export class UserService {
 
   addDriver(driver: Driver): Observable <Driver>{
     console.log(rootUrl+this.addDriverUrl); 
-    console.log(rootUrl + this.addDriverUrl+driver+ httpOptions);
-
-    
-    return this.http.post<Driver>(rootUrl + this.addDriverUrl, driver, httpOptions).pipe(
-      tap((hero: Driver) => console.log(`added hero w/ id=${driver.driverId}`)),
-      catchError(this.handleError<Driver>('addHero'))
-    );
+    console.log(driver.driverName);
+    return this.http.post<Driver>(rootUrl + this.addDriverUrl+'?'+'driverName='+driver.driverName+'&'+'nationalId='+driver.driverNationalId
+    + '&'+'birthDate='+ driver.driverBirthDate + '&' + 'telephoneNumber=' + driver.driverTelephoneNumber,  JSON.stringify(driver), httpOptions)
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

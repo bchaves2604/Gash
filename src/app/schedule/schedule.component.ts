@@ -50,13 +50,13 @@ export class ScheduleComponent implements OnInit {
 
   addDriver(driverName: string, driverNid: string, driverBirthDate: string, driverPhoneNumber: string){
     driverName.trim();
-    var driver= new Driver();
-    driver.driverNationalId=driverNid;
+    let driver= new Driver();
     driver.driverName=driverName;
+    driver.driverNationalId=driverNid;
     driver.driverBirthDate=driverBirthDate;
     driver.driverTelephoneNumber=driverPhoneNumber;
     this.userService.addDriver(driver)
-      .subscribe(response => console.log(response));
+      .subscribe();
   }
 
 
