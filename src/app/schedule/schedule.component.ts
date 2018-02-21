@@ -58,6 +58,4 @@ export class ScheduleComponent implements OnInit {
     this.userService.addDriver(driver)
       .subscribe();
   }
-
-
 }

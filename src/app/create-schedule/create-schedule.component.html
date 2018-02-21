@@ -10,9 +10,10 @@
 <div class="table-view">
   <div class="search-bar">
       <label class="right-pane">Conductor:</label>
-      <select class="filter">
-          <option value="Juan Alvarez" selected>Juan Alvarez</option>
-      </select>
+          <select class="filter">
+            <option value="default">Seleccione un conductor:</option>
+            <option *ngFor="let driver of drivers">{{driver.driverName}} - {{driver.driverNationalId}}</option>
+          </select>
     </div>
     <table class="table table-bordered table-responsive table-size">
         <tbody>
