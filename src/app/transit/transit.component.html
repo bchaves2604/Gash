@@ -57,12 +57,12 @@
             </th>
           </tr>
           <tr *ngFor="let transit of transits">
-            <td bgcolor="#424242" [ngStyle]="{'color': getColor(transit.arrive)}">{{transit.name}}</td>
-            <td bgcolor="#424242" [ngStyle]="{'color': getColor(transit.arrive)}">{{transit.truckId}}</td>
-            <td bgcolor="#424242" [ngStyle]="{'color': getColor(transit.arrive)}">{{transit.out}}</td>
-            <td bgcolor="#424242" [ngStyle]="{'color': getColor(transit.arrive)}">{{transit.arrive}}</td>
-            <td bgcolor="#424242" [ngStyle]="{'color': getColor(transit.arrive)}">{{transit.description}}</td>
-            <td bgcolor="#424242" [ngStyle]="{'color': getColor(transit.arrive)}">{{transit.truckNumber}}</td>
+            <td bgcolor="#424242" [ngStyle]="{'color': getColor(transit.arrive, transit.out)}">{{transit.name}}</td>
+            <td bgcolor="#424242" [ngStyle]="{'color': getColor(transit.arrive, transit.out)}">{{transit.truckId}}</td>
+            <td bgcolor="#424242" [ngStyle]="{'color': getColor(transit.arrive, transit.out)}">{{transit.out}}</td>
+            <td bgcolor="#424242" [ngStyle]="{'color': getColor(transit.arrive, transit.out)}">{{transit.arrive}}</td>
+            <td bgcolor="#424242" [ngStyle]="{'color': getColor(transit.arrive, transit.out)}">{{transit.description}}</td>
+            <td bgcolor="#424242" [ngStyle]="{'color': getColor(transit.arrive, transit.out)}">{{transit.truckNumber}}</td>
           </tr>
         </tbody>
     </table>

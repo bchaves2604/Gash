@@ -45,25 +45,27 @@
           </tr>
           <tr>
             <td><i style="font-weight: bold;">Entrada:</i></td>
-            <td><input class="time-picker" type="time" value="08:00"></td>
-            <td><input class="time-picker" type="time" value="08:00"></td>
-            <td><input class="time-picker" type="time" value="08:00"></td>
-            <td><input class="time-picker" type="time" value="08:00"></td>
-            <td><input class="time-picker" type="time" value="08:00"></td>
-            <td><input class="time-picker" type="time" value="08:00"></td>
-            <td><input class="time-picker" type="time" value="08:00"></td>
+            <td><input #mondayEntrance class="time-picker" type="time" ></td>
+            <td><input #tuesdayEntrance class="time-picker" type="time" ></td>
+            <td><input #wednesdayEntrance class="time-picker" type="time" ></td>
+            <td><input #thursdayEntrance class="time-picker" type="time" ></td>
+            <td><input #fridayEntrance class="time-picker" type="time" ></td>
+            <td><input #saturdayEntrance class="time-picker" type="time" ></td>
+            <td><input #sundayEntrance class="time-picker" type="time" ></td>
           </tr>
           <tr>
             <td><i style="font-weight: bold;">Salida:</i></td>
-            <td><input class="time-picker" type="time" value="08:00"></td>
-            <td><input class="time-picker" type="time" value="08:00"></td>
-            <td><input class="time-picker" type="time" value="08:00"></td>
-            <td><input class="time-picker" type="time" value="08:00"></td>
-            <td><input class="time-picker" type="time" value="08:00"></td>
-            <td><input class="time-picker" type="time" value="08:00"></td>
-            <td><input class="time-picker" type="time" value="08:00"></td>
+            <td><input #mondayOut class="time-picker" type="time" ></td>
+            <td><input #tuesdayOut  class="time-picker" type="time" ></td>
+            <td><input #wednesdayOut  class="time-picker" type="time" ></td>
+            <td><input #thursdayOut  class="time-picker" type="time" ></td>
+            <td><input #fridayOut  class="time-picker" type="time" ></td>
+            <td><input #saturdayOut  class="time-picker" type="time" ></td>
+            <td><input #sundayOut  class="time-picker" type="time" ></td>
           </tr>
         </tbody>
     </table>
 </div>
-<div class="submitContainer"><button class="submit" type="submit">Registar</button></div>
+<div class="submitContainer"><button class="submit" (click)="addSchedule(mondayEntrance.value, tuesdayEntrance.value, wednesdayEntrance.value, 
+  thursdayEntrance.value, fridayEntrance.value, saturdayEntrance.value, sundayEntrance.value, mondayOut.value, tuesdayOut.value, wednesdayOut.value,
+  thursdayOut.value, fridayOut.value, saturdayOut.value, sundayOut.value);">Registar</button></div>
