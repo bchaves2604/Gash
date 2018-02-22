@@ -14,27 +14,46 @@ export class TransitComponent implements OnInit {
   ngOnInit() {
   }
 
-  getColor(arrive){
-    var time =arrive.charAt(arrive.length-2) + arrive.charAt(arrive.length-1);
-    var hour=  arrive.charAt(arrive.length-8)+arrive.charAt(arrive.length-7)
-    var date= new Date();
-    var currentHour= date.getHours();
+  getColor(out, arrive){
+    var outHour= out.charAt(out.length-8)+out.charAt(out.length-7);
+    var arriveHour=  arrive.charAt(arrive.length-8)+arrive.charAt(arrive.length-7);
+    var outTime =out.charAt(out.length-2) + out.charAt(out.length-1);    
+    var arriveTime =arrive.charAt(arrive.length-2) + arrive.charAt(arrive.length-1);
 
-    if(time==="pm" && hour!=12){
-      hour=parseInt(hour) +12;
+    if(arriveTime==="pm" && arriveHour!=12){
+      outHour=parseInt(outHour) +12;
     }
-    var diff=Math.abs(currentHour-hour);
-    if(hour>currentHour && diff>1){
+    if(outTime==="pm" && outHour!=12)
+    {
+      outHour=parseInt(outHour) +12;
+    }
+
+    if(outHour== 12 && outTime==="am" )
+    {
+      outHour=parseInt(outHour) -12;
+    }
+
+    if(arriveHour== 12 && arriveTime==="am" )
+    {
+      arriveHour=parseInt(arriveHour) -12;
+    }
+
+    /*console.log('entrance: '+entranceHour);
+    console.log('out: '+outHour);*/
+    var diff=Math.abs(arriveHour-outHour);
+    console.log('diff: '+diff);
+    if(diff<10){
       //green
-      return '#04B45F'
+      return '#04B45F';
     }
-    else if( hour>currentHour && diff<=1){
+    
+    else if(diff>=10 && diff<12){
       //yellow
-      return '#F4FA58'
+      return '#F4FA58';
     }
-    else if(hour<=currentHour){
+    else if(diff>=12){
       //red
-      return '#FE2E2E'
+      return '#FE2E2E';
     }
   }
 }

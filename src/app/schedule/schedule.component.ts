@@ -22,29 +22,46 @@ export class ScheduleComponent implements OnInit {
   ngOnInit() {
 
   }
-  getColor(out){
-    var time =out.charAt(out.length-2) + out.charAt(out.length-1);
-    var hour=  out.charAt(out.length-8)+out.charAt(out.length-7)
-    var date= new Date();
-    var currentHour= date.getHours();
+  getColor(out, entrance){
+    var entranceHour= entrance.charAt(entrance.length-8)+entrance.charAt(entrance.length-7);
+    var outHour=  out.charAt(out.length-8)+out.charAt(out.length-7);
+    var entranceTime =entrance.charAt(entrance.length-2) + entrance.charAt(entrance.length-1);    
+    var outTime =out.charAt(out.length-2) + out.charAt(out.length-1);
 
-    if(time==="pm" && hour!=12){
-      hour=parseInt(hour) +12;
+    if(outTime==="pm" && outHour!=12){
+      outHour=parseInt(outHour) +12;
     }
-    var diff=Math.abs(currentHour-hour);
+    if(entranceTime==="pm" && entranceHour!=12)
+    {
+      entranceHour=parseInt(entranceHour) +12;
+    }
 
-    if(hour>currentHour && diff>1){
+    if(entranceHour== 12 && entranceTime==="am" )
+    {
+      entranceHour=parseInt(entranceHour) -12;
+    }
+
+    if(outHour== 12 && outTime==="am" )
+    {
+      outHour=parseInt(outHour) -12;
+    }
+
+    console.log('entrance: '+entranceHour);
+    console.log('out: '+outHour);
+    var diff=Math.abs(outHour-entranceHour);
+    console.log('diff: '+diff);
+    if(diff<10){
       //green
-      return '#04B45F'
+      return '#04B45F';
     }
     
-    else if(hour>currentHour && diff<=1){
+    else if(diff>=10 && diff<12){
       //yellow
-      return '#F4FA58'
+      return '#F4FA58';
     }
-    else if(hour<=currentHour){
+    else if(diff>=12){
       //red
-      return '#FE2E2E'
+      return '#FE2E2E';
     }
   }
 

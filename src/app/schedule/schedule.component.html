@@ -87,12 +87,12 @@
             </th>
           </tr>
           <tr *ngFor="let schedule of schedules">
-            <td bgcolor="#424242" [ngStyle]="{'color': getColor(schedule.out)}">{{schedule.name}}</td>
-            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out)}">{{schedule.id}}</td>
-            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out)}">{{schedule.entrance}}</td>
-            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out)}">{{schedule.out}}</td>
-            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out)}">{{schedule.route}}</td>
-            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out)}">{{schedule.truck}}</td>
+            <td bgcolor="#424242" [ngStyle]="{'color': getColor(schedule.out, schedule.entrance)}">{{schedule.name}}</td>
+            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out, schedule.entrance)}">{{schedule.id}}</td>
+            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out, schedule.entrance)}">{{schedule.entrance}}</td>
+            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out, schedule.entrance)}">{{schedule.out}}</td>
+            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out, schedule.entrance)}">{{schedule.route}}</td>
+            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out, schedule.entrance)}">{{schedule.truck}}</td>
           </tr>
         </tbody>
     </table>
