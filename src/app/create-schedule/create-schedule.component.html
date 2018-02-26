@@ -8,13 +8,6 @@
 </nav>
 
 <div class="table-view">
-  <div class="search-bar">
-      <label class="right-pane">Conductor:</label>
-          <select class="filter">
-            <option value="default">Seleccione un conductor:</option>
-            <option *ngFor="let driver of drivers">{{driver.driverName}} - {{driver.driverNationalId}}</option>
-          </select>
-    </div>
     <table class="table table-bordered table-responsive table-size">
         <tbody>
           <tr>
@@ -45,27 +38,57 @@
           </tr>
           <tr>
             <td><i style="font-weight: bold;">Entrada:</i></td>
-            <td><input #mondayEntrance class="time-picker" type="time" ></td>
-            <td><input #tuesdayEntrance class="time-picker" type="time" ></td>
-            <td><input #wednesdayEntrance class="time-picker" type="time" ></td>
-            <td><input #thursdayEntrance class="time-picker" type="time" ></td>
-            <td><input #fridayEntrance class="time-picker" type="time" ></td>
-            <td><input #saturdayEntrance class="time-picker" type="time" ></td>
-            <td><input #sundayEntrance class="time-picker" type="time" ></td>
+            <td><input #mondayEntrance (change)="textScheduleEmpty(mondayEntrance.value)" class="time-picker" type="time" ></td>
+            <td><input #tuesdayEntrance (change)="textScheduleEmpty(tuesdayEntrance.value)" class="time-picker" type="time" ></td>
+            <td><input #wednesdayEntrance (change)="textScheduleEmpty(wednesdayEntrance.value)" class="time-picker" type="time" ></td>
+            <td><input #thursdayEntrance (change)="textScheduleEmpty(thursdayEntrance.value)" class="time-picker" type="time" ></td>
+            <td><input #fridayEntrance (change)="textScheduleEmpty(fridayEntrance.value)" class="time-picker" type="time" ></td>
+            <td><input #saturdayEntrance (change)="textScheduleEmpty(saturdayEntrance.value)" class="time-picker" type="time" ></td>
+            <td><input #sundayEntrance (change)="textScheduleEmpty(sundayEntrance.value)"  class="time-picker" type="time" ></td>
           </tr>
           <tr>
             <td><i style="font-weight: bold;">Salida:</i></td>
-            <td><input #mondayOut class="time-picker" type="time" ></td>
-            <td><input #tuesdayOut  class="time-picker" type="time" ></td>
-            <td><input #wednesdayOut  class="time-picker" type="time" ></td>
-            <td><input #thursdayOut  class="time-picker" type="time" ></td>
-            <td><input #fridayOut  class="time-picker" type="time" ></td>
-            <td><input #saturdayOut  class="time-picker" type="time" ></td>
-            <td><input #sundayOut  class="time-picker" type="time" ></td>
+            <td><input #mondayOut (change)="textScheduleEmpty(mondayOut.value)" class="time-picker" type="time" ></td>
+            <td><input #tuesdayOut  (change)="textScheduleEmpty(tuesdayOut.value)" class="time-picker" type="time" ></td>
+            <td><input #wednesdayOut  (change)="textScheduleEmpty(wednesdayOut.value)" class="time-picker" type="time" ></td>
+            <td><input #thursdayOut  (change)="textScheduleEmpty(thursdayOut.value)" class="time-picker" type="time" ></td>
+            <td><input #fridayOut  (change)="textScheduleEmpty(fridayOut.value)" class="time-picker" type="time" ></td>
+            <td><input #saturdayOut  (change)="textScheduleEmpty(saturdayOut.value)" class="time-picker" type="time" ></td>
+            <td><input #sundayOut  (change)="textScheduleEmpty(sundayOut.value)" class="time-picker" type="time" ></td>
           </tr>
         </tbody>
     </table>
 </div>
-<div class="submitContainer"><button class="submit" (click)="addSchedule(mondayEntrance.value, tuesdayEntrance.value, wednesdayEntrance.value, 
+
+<div class="table-view">
+  <table class="table table-bordered table-responsive table-size">
+    <tr>
+      <th bgcolor="#D8D8D8">
+          <i (click)="seleactAll()">Seleccionar todos</i> 
+      </th>
+      <th bgcolor="#D8D8D8">
+        
+          <i>Nombre de Chofer</i> 
+      </th>
+      <th bgcolor="#D8D8D8">
+          <i># ID </i> 
+      </th>
+      <th bgcolor="#D8D8D8">
+          <i>Teléfono</i> 
+      </th>
+    </tr>
+    <tr *ngFor="let driver of drivers">
+      <td><input type="checkbox" [(ngModel)]="driver.selected"></td>
+      <td>{{driver.driverName}}</td>
+      <td>{{driver.driverNationalId}}</td>
+      <td>{{driver.driverTelephoneNumber}}</td>
+    </tr>
+  </table>
+</div>
+<div class="submitContainer">
+  <button class="submit" (click)="addSchedule(mondayEntrance.value, tuesdayEntrance.value, wednesdayEntrance.value, 
   thursdayEntrance.value, fridayEntrance.value, saturdayEntrance.value, sundayEntrance.value, mondayOut.value, tuesdayOut.value, wednesdayOut.value,
-  thursdayOut.value, fridayOut.value, saturdayOut.value, sundayOut.value);">Registar</button></div>
+  thursdayOut.value, fridayOut.value, saturdayOut.value, sundayOut.value);">Registar</button>
+</div>
+<br>
+

@@ -5,5 +5,5 @@ export class GridSchedule{
     out: string;
     route: string;
     truck: Number;
-    
+    processStatus: String
 }

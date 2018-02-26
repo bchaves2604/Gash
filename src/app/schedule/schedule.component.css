@@ -144,3 +144,6 @@ th{
 .close-modal-button{
     color: white;
 }
+.warning-label{
+    color: red;
+}

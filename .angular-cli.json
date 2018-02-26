@@ -34,6 +34,9 @@
       "config": "./protractor.conf.js"
     }
   },
+  "styles": [
+        "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css"
+    ],
   "lint": [
     {
       "project": "src/tsconfig.app.json",

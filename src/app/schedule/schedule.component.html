@@ -38,7 +38,8 @@
         <input #driverPhoneNumber class="form-control" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-default btn-search" data-dismiss="modal" (click)="addDriver(driverName.value, driverNid.value,driverBirthDate.value,driverPhoneNumber.value);" >Agregar</button>
+        <button class="btn btn-default btn-search" data-dismiss="modal" (click)="addDriver(driverName.value, driverNid.value,driverBirthDate.value,driverPhoneNumber.value);
+        driverName.value=''; driverNid.value='';driverPhoneNumber.value='';" >Agregar</button>
       </div>
     </div>
 
@@ -85,14 +86,18 @@
             <th bgcolor="#D8D8D8">
               <i># Camión</i> 
             </th>
+            <th bgcolor="#D8D8D8">
+                <i>Estado</i> 
+              </th>
           </tr>
           <tr *ngFor="let schedule of schedules">
-            <td bgcolor="#424242" [ngStyle]="{'color': getColor(schedule.out, schedule.entrance)}">{{schedule.name}}</td>
-            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out, schedule.entrance)}">{{schedule.id}}</td>
-            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out, schedule.entrance)}">{{schedule.entrance}}</td>
-            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out, schedule.entrance)}">{{schedule.out}}</td>
-            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out, schedule.entrance)}">{{schedule.route}}</td>
-            <td bgcolor="#424242"[ngStyle]="{'color': getColor(schedule.out, schedule.entrance)}">{{schedule.truck}}</td>
+            <td bgcolor="#424242" >{{schedule.name}}</td>
+            <td bgcolor="#424242">{{schedule.id}}</td>
+            <td bgcolor="#424242"[ngStyle]="{'color': getColorSchedule(schedule.entrance, schedule.out)}">{{schedule.entrance}}</td>
+            <td bgcolor="#424242"[ngStyle]="{'color': getColorSchedule(schedule.entrance, schedule.out)}">{{schedule.out}}</td>
+            <td bgcolor="#424242">{{schedule.route}}</td>
+            <td bgcolor="#424242">{{schedule.truck}}</td> 
+            <td bgcolor="#424242" [ngStyle]="{'color': getColorStatus(schedule.entrance, schedule.out)}">{{schedule.processStatus}}</td> 
           </tr>
         </tbody>
     </table>

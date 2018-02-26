@@ -11,6 +11,9 @@ import { MenuComponent } from './menu/menu.component';
 import { TransitComponent } from './transit/transit.component';
 import { UserService } from './user.service';
 import { CreateScheduleComponent } from './create-schedule/create-schedule.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 
@@ -26,6 +29,10 @@ import { CreateScheduleComponent } from './create-schedule/create-schedule.compo
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ToastModule.forRoot(),
+    BrowserModule, 
+    BrowserAnimationsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

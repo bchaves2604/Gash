@@ -8,6 +8,7 @@ export class Driver{
     driverTelephoneNumber: string
     driverBirthDate: string
     driverLastUpdatedDateTime: string
+    selected: boolean=true
 
     constructor(){
         
