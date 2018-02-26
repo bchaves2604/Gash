@@ -41,8 +41,7 @@ export class CreateScheduleComponent implements OnInit {
     this.userService.getDrivers().subscribe(data => this.drivers = data);
   }
   addSchedule(mondayEntrance: String, tuesdayEntrance: String, wednesdayEntrance: String, thursdayEntrance: String, fridayEntrance: String, saturdayEntrance: String, 
-    sundayEntrance: String, mondayOut: String, tuesdayOut: String, wednesdayOut: String, thursdayOut: String, fridayOut: String, saturdayOut: String, sundayOut: String,
-     driverNationalId: String){
+    sundayEntrance: String, mondayOut: String, tuesdayOut: String, wednesdayOut: String, thursdayOut: String, fridayOut: String, saturdayOut: String, sundayOut: String){
       if(mondayEntrance!='' && tuesdayEntrance!='' && wednesdayEntrance!=''&& thursdayEntrance!=''&& fridayEntrance!=''&& saturdayEntrance!=''&& sundayEntrance!=''
       && mondayOut!=''&& tuesdayOut!=''&& wednesdayOut!=''&& thursdayOut!=''&& fridayOut!=''&& saturdayOut!=''&& sundayOut!=''){
         let schedule= new Schedule();
@@ -52,21 +51,22 @@ export class CreateScheduleComponent implements OnInit {
         schedule.thursdayEntrance=thursdayEntrance;
         schedule.fridayEntrance=fridayEntrance;
         schedule.saturdayEntrance=saturdayEntrance;
-        schedule.sundayEntrance=sundayEntrance;
+        schedule.sundayEntrance=sundayEntrance; 
         schedule.mondayOut=mondayOut;
         schedule.tuesdayOut=tuesdayOut;
-        schedule.wednesdayOut=wednesdayOut;
+        schedule.wednesdayOut=wednesdayOut; 
         schedule.thursdayOut=thursdayOut;
         schedule.fridayOut=fridayOut;
         schedule.saturdayOut=saturdayOut;
         schedule.sundayOut=sundayOut;
-        console.log('selectedOption: '+this.selectedOption);
-        if(this.selectedOption!='default' && this.selectedOption!=undefined){
-          this.selectedOption =this.getSubstring(this.selectedOption);
-          this.userService.addSchedule(schedule,this.selectedOption)
-        .subscribe();
-        this.showSuccess();
-        this.selectedOption=undefined;
+        var selectedDrivers: Driver[]=this.getDriversSelected();
+        var i;
+        if(this.isDriverSelected()){
+          for(i=0; i <selectedDrivers.length; i++){
+            this.userService.addSchedule(schedule,selectedDrivers[i].driverId)
+            .subscribe();
+          }
+          this.showSuccess();
         }
         else{
           this.showError();
@@ -76,6 +76,27 @@ export class CreateScheduleComponent implements OnInit {
         this.showError();
       }
      
+  }
+
+  isDriverSelected(): boolean{
+    var i;
+    for(i=0;i<this.drivers.length;i++){
+      if(this.drivers[i].selected){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  getDriversSelected(): Driver[]{
+    var selectedDrivers: Driver[]=[];
+    var i;
+    for(i=0;i<this.drivers.length;i++){
+      if(this.drivers[i].selected){
+        selectedDrivers.push(this.drivers[i]);
+      }
+    }
+    return selectedDrivers;
   }
 
   getSubstring(selectedOption): string{
@@ -90,7 +111,6 @@ export class CreateScheduleComponent implements OnInit {
   }
 
   textScheduleEmpty(textValue){
-    console.log(this.selectedOption);
     if (textValue === '' || this.selectedOption==='') {
       this.emptySchedule='invalid'; 
     }

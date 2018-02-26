@@ -17,6 +17,7 @@ export class ScheduleComponent implements OnInit {
 
   schedules= Schedules;
   private showErrorLabel: boolean=false;
+  statusList= ['Ingreso a Terminal','Orden de Alistado', 'Orden de Despacho','Salida de Terminal'];
   
 
   constructor(private userService: UserService, private toastr: ToastsManager,vcr: ViewContainerRef) {
@@ -107,18 +108,16 @@ export class ScheduleComponent implements OnInit {
     {
       entranceHour=parseInt(entranceHour) -12;
     }
-  
-    if(currentHour > entranceHour){
-      lastProcess=minutes+(60-entranceMinutes);
+    var diff= Math.abs(currentHour - entranceHour); 
 
+    if(currentHour > entranceHour){
+      lastProcess=minutes+(60*diff-entranceMinutes);
+      
     }
     else{
       lastProcess= Math.abs(minutes-entranceMinutes);
     }
-    
-    var diff= Math.abs(currentHour - entranceHour); 
-    console.log(lastProcess);
-    if(lastProcess<=30 && minutes>entranceMinutes && currentHour===entranceHour){
+    if(lastProcess<=30 && minutes>entranceMinutes && currentHour===Math.abs(entranceHour)){
       //green
       return '#04B45F';
     }
@@ -127,7 +126,7 @@ export class ScheduleComponent implements OnInit {
       //yellow
       return '#F4FA58'; 
     }
-
+    
     else if(lastProcess>60 && diff>=1){
       //red
       return '#FE2E2E';
@@ -150,5 +149,29 @@ export class ScheduleComponent implements OnInit {
       this.showError();
     }
     
+  }
+  changeStatus(id,status){
+    var i;
+    for(i=0;i< this.statusList.length;i++){
+      if(this.statusList[i]===status){
+        if(i+1<this.statusList.length){
+          this.searchScheduleGrid(id,this.statusList[i+1]);
+          return;
+        }
+        else{
+          this.searchScheduleGrid(id, this.statusList[0]);
+          return;
+        }
+      }
+    }
+  }
+
+  searchScheduleGrid(id,status){
+    var i;
+    for(i=0;i<this.schedules.length;i++){
+      if(this.schedules[i].id===id){
+        this.schedules[i].processStatus=status;
+      }
+    }
   }
 }
