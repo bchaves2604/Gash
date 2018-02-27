@@ -17,6 +17,7 @@ export class ScheduleComponent implements OnInit {
 
   schedules= Schedules;
   private showErrorLabel: boolean=false;
+  statusList= ['Ingreso a Terminal','Orden de Alistado', 'Orden de Despacho','Salida de Terminal'];
   
 
   constructor(private userService: UserService, private toastr: ToastsManager,vcr: ViewContainerRef) {
@@ -151,5 +152,29 @@ export class ScheduleComponent implements OnInit {
       this.showError();
     }
     
+  }
+
+  changeStatus(id,status){
+    var i;
+    for(i=0;i< this.statusList.length;i++){
+      if(this.statusList[i]===status){
+        if(i+1<this.statusList.length){
+          this.searchScheduleGrid(id,this.statusList[i+1]);
+          return;
+        }
+        else{
+          this.searchScheduleGrid(id, this.statusList[0]);
+          return;
+        }
+      }
+    }
+  }
+  searchScheduleGrid(id,status){
+    var i;
+    for(i=0;i<this.schedules.length;i++){
+      if(this.schedules[i].id===id){
+        this.schedules[i].processStatus=status;
+      }
+    }
   }
 }

@@ -102,8 +102,6 @@
             <td bgcolor="#424242">{{schedule.route}}</td>
             <td bgcolor="#424242">{{schedule.truck}}</td>
             <td bgcolor="#424242" (click)="changeStatus(schedule.id, schedule.processStatus)" [ngStyle]="{'color': getColorStatus(schedule.entrance, schedule.out)}">{{schedule.processStatus}} </td>
-            <td bgcolor="#424242">{{schedule.truck}}</td> 
-            <td bgcolor="#424242" [ngStyle]="{'color': getColorStatus(schedule.entrance, schedule.out)}">{{schedule.processStatus}}</td> 
           </tr>
         </tbody>
     </table>
