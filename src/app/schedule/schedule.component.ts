@@ -120,7 +120,8 @@ export class ScheduleComponent implements OnInit {
 
     if(currentHour > entranceHour){
       lastProcess=minutes+(60-entranceMinutes);
-    var diff= Math.abs(currentHour - entranceHour);
+      var diff= Math.abs(currentHour - entranceHour);
+    }
 
     if(currentHour > entranceHour){
       lastProcess=minutes+(60*diff-entranceMinutes);
@@ -132,7 +133,6 @@ export class ScheduleComponent implements OnInit {
 
     var diff= Math.abs(currentHour - entranceHour);
     console.log(lastProcess);
-    if(lastProcess<=30 && minutes>entranceMinutes && currentHour===entranceHour){
     if(lastProcess<=30 && minutes>entranceMinutes && currentHour===Math.abs(entranceHour)){
       //green
       return '#04B45F';
@@ -150,7 +150,6 @@ export class ScheduleComponent implements OnInit {
   }
 
   addDriver(driverName: string, driverNid: string, driverBirthDate: string, driverPhoneNumber: string){
-    console.log(this.selectedValue.truckId);
     if(driverName!='' && driverNid!='' && driverBirthDate!='' && driverPhoneNumber!=''){
       let driver= new Driver();
       driver.driverName=driverName.trim();
@@ -185,7 +184,7 @@ export class ScheduleComponent implements OnInit {
   }
 
   searchScheduleGrid(id,status){
-    var i;
+    var i;  
     for(i=0;i<this.schedules.length;i++){
       if(this.schedules[i].id===id){
         this.schedules[i].processStatus=status;
