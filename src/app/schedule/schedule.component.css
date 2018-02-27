@@ -59,7 +59,7 @@ tr {
     width: 15%;
     background-color: white;
     height: 100%;
-    
+
 }
 
 .table-content {
@@ -121,8 +121,8 @@ th{
 
 .filter-pane-table-view button {
     width: 6%;
-    border: none;  
-    height: 20px; 
+    border: none;
+    height: 20px;
     margin-top:4px;
 }
 
