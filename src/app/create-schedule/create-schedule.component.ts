@@ -62,12 +62,14 @@ export class CreateScheduleComponent implements OnInit {
         schedule.saturdayOut=saturdayOut;
         schedule.sundayOut=sundayOut;
         console.log('selectedOption: '+this.selectedOption);
-        if(this.selectedOption!='default' && this.selectedOption!=undefined){
-          this.selectedOption =this.getSubstring(this.selectedOption);
-          this.userService.addSchedule(schedule,this.selectedOption)
-        .subscribe();
-        this.showSuccess();
-        this.selectedOption=undefined;
+        var selectedDrivers: Driver[]=this.getDriversSelected();
+        var i;
+        if(this.isDriverSelected()){
+          for(i=0; i <selectedDrivers.length; i++){
+            this.userService.addSchedule(schedule,selectedDrivers[i].driverId)
+            .subscribe();
+          }
+          this.showSuccess();
         }
         else{
           this.showError();
