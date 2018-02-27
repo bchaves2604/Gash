@@ -61,6 +61,7 @@ export class CreateScheduleComponent implements OnInit {
         schedule.fridayOut=fridayOut;
         schedule.saturdayOut=saturdayOut;
         schedule.sundayOut=sundayOut;
+<<<<<<< HEAD
         //console.log('selectedOption: '+this.selectedOption);
         var selectedDrivers: Driver[]=this.getDriversSelected();
         var i;
@@ -73,6 +74,19 @@ export class CreateScheduleComponent implements OnInit {
          }
          else{
            this.showError();}
+=======
+        console.log('selectedOption: '+this.selectedOption);
+        if(this.selectedOption!='default' && this.selectedOption!=undefined){
+          this.selectedOption =this.getSubstring(this.selectedOption);
+          this.userService.addSchedule(schedule,this.selectedOption)
+        .subscribe();
+        this.showSuccess();
+        this.selectedOption=undefined;
+        }
+        else{
+          this.showError();
+        }
+>>>>>>> parent of e42ac13... Adding changes to insert schedule to multiple drivers
       }
       else{
         this.showError();
