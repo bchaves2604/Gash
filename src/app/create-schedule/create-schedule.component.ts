@@ -40,6 +40,7 @@ export class CreateScheduleComponent implements OnInit {
   getDrivers(){
     this.userService.getDrivers().subscribe(data => this.drivers = data);
   }
+  
   addSchedule(mondayEntrance: String, tuesdayEntrance: String, wednesdayEntrance: String, thursdayEntrance: String, fridayEntrance: String, saturdayEntrance: String, 
     sundayEntrance: String, mondayOut: String, tuesdayOut: String, wednesdayOut: String, thursdayOut: String, fridayOut: String, saturdayOut: String, sundayOut: String,
      driverNationalId: String){

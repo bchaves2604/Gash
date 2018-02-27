@@ -20,7 +20,6 @@
 <!-- Modal -->
 <div id="addDriverModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header modal-driver">
@@ -36,13 +35,18 @@
         <input #driverBirthDate type="date" class="form-control">
         <label>Número de teléfono</label>
         <input #driverPhoneNumber class="form-control" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+        <label>Camión</label>
+        <br>
+        <select [(ngModel)]="selectedValue">
+          <option value="default">Seleccione un camión</option>
+          <option *ngFor="let truck of trucks" [ngValue]="truck">{{truck.truckNumber}} : {{truck.truckMake}} </option>
+        </select>
       </div>
       <div class="modal-footer">
         <button class="btn btn-default btn-search" data-dismiss="modal" (click)="addDriver(driverName.value, driverNid.value,driverBirthDate.value,driverPhoneNumber.value);
         driverName.value=''; driverNid.value='';driverPhoneNumber.value='';" >Agregar</button>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -61,7 +65,7 @@
         <option value="ID" selected>ID</option>
         <option value="Ruta">Ruta</option>
     </select>
-    <input class="filter" placeholder="Search"> 
+    <input class="filter" placeholder="Search">
     <button class="btn-search glyphicon glyphicon-search"></button>
   </div>
 
@@ -72,22 +76,22 @@
               <i>Nombre de Chofer</i>
             </th>
             <th bgcolor="#D8D8D8">
-              <i># ID</i>     
+              <i># ID</i>
             </th>
             <th bgcolor="#D8D8D8">
-              <i>Entrada</i>  
+              <i>Entrada</i>
             </th>
             <th bgcolor="#D8D8D8">
-              <i>Salida</i>  
+              <i>Salida</i>
             </th>
             <th bgcolor="#D8D8D8">
-              <i># Ruta</i>   
+              <i># Ruta</i>
             </th>
             <th bgcolor="#D8D8D8">
-              <i># Camión</i> 
+              <i># Camión</i>
             </th>
             <th bgcolor="#D8D8D8">
-                <i>Estado</i> 
+                <i>Estado</i>
               </th>
           </tr>
           <tr *ngFor="let schedule of schedules">
@@ -96,8 +100,8 @@
             <td bgcolor="#424242"[ngStyle]="{'color': getColorSchedule(schedule.entrance, schedule.out)}">{{schedule.entrance}}</td>
             <td bgcolor="#424242"[ngStyle]="{'color': getColorSchedule(schedule.entrance, schedule.out)}">{{schedule.out}}</td>
             <td bgcolor="#424242">{{schedule.route}}</td>
-            <td bgcolor="#424242">{{schedule.truck}}</td> 
-            <td bgcolor="#424242" [ngStyle]="{'color': getColorStatus(schedule.entrance, schedule.out)}">{{schedule.processStatus}}</td> 
+            <td bgcolor="#424242">{{schedule.truck}}</td>
+            <td bgcolor="#424242" [ngStyle]="{'color': getColorStatus(schedule.entrance, schedule.out)}">{{schedule.processStatus}}</td>
           </tr>
         </tbody>
     </table>

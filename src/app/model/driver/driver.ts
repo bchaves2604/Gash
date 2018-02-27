@@ -4,13 +4,13 @@ export class Driver{
     truckId: Number;
     invoiceId: Number;
     driverNationalId: string
-    driverName: string 
+    driverName: string
     driverTelephoneNumber: string
     driverBirthDate: string
     driverLastUpdatedDateTime: string
     selected: boolean=true
 
     constructor(){
-        
+
     }
 }

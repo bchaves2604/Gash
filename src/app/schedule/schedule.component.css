@@ -147,3 +147,10 @@ th{
 .warning-label{
     color: red;
 }
+
+.modal-body select{
+    color: black;
+    border-radius: 5px;
+    width: 100%;
+    height: 35px;
+}
