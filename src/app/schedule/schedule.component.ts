@@ -19,13 +19,7 @@ export class ScheduleComponent implements OnInit {
   private trucks: Truck[];
   schedules= Schedules;
   private showErrorLabel: boolean=false;
-<<<<<<< HEAD
-  selectedValue;
-  statusList= ['Ingreso a Terminal','Orden de Alistado', 'Orden de Despacho','Salida de Terminal'];
-
-=======
   
->>>>>>> parent of e42ac13... Adding changes to insert schedule to multiple drivers
 
   constructor(private userService: UserService, private toastr: ToastsManager,vcr: ViewContainerRef) {
     this.toastr.setRootViewContainerRef(vcr);
@@ -121,36 +115,18 @@ export class ScheduleComponent implements OnInit {
     {
       entranceHour=parseInt(entranceHour) -12;
     }
-<<<<<<< HEAD
-
-    if(currentHour > entranceHour){
-      lastProcess=minutes+(60-entranceMinutes);
-      var diff= Math.abs(currentHour - entranceHour);
-    }
-
-    if(currentHour > entranceHour){
-      lastProcess=minutes+(60*diff-entranceMinutes);
-=======
   
     if(currentHour > entranceHour){
       lastProcess=minutes+(60-entranceMinutes);
->>>>>>> parent of e42ac13... Adding changes to insert schedule to multiple drivers
 
     }
     else{
       lastProcess= Math.abs(minutes-entranceMinutes);
     }
-<<<<<<< HEAD
-
-    var diff= Math.abs(currentHour - entranceHour);
-    console.log(lastProcess);
-    if(lastProcess<=30 && minutes>entranceMinutes && currentHour===Math.abs(entranceHour)){
-=======
     
     var diff= Math.abs(currentHour - entranceHour); 
     console.log(lastProcess);
     if(lastProcess<=30 && minutes>entranceMinutes && currentHour===entranceHour){
->>>>>>> parent of e42ac13... Adding changes to insert schedule to multiple drivers
       //green
       return '#04B45F';
     }
@@ -173,7 +149,7 @@ export class ScheduleComponent implements OnInit {
       driver.driverNationalId=driverNid.trim();
       driver.driverBirthDate=driverBirthDate;
       driver.driverTelephoneNumber=driverPhoneNumber.trim();
-      driver.truckId = this.selectedValue.truckId;
+      //driver.truckId = this.selectedValue.truckId;
       this.userService.addDriver(driver)
         .subscribe();
       this.showSuccess();
@@ -184,31 +160,4 @@ export class ScheduleComponent implements OnInit {
     }
 
   }
-<<<<<<< HEAD
-  changeStatus(id,status){
-    var i;
-    for(i=0;i< this.statusList.length;i++){
-      if(this.statusList[i]===status){
-        if(i+1<this.statusList.length){
-          this.searchScheduleGrid(id,this.statusList[i+1]);
-          return;
-        }
-        else{
-          this.searchScheduleGrid(id, this.statusList[0]);
-          return;
-        }
-      }
-    }
-  }
-
-  searchScheduleGrid(id,status){
-    var i;  
-    for(i=0;i<this.schedules.length;i++){
-      if(this.schedules[i].id===id){
-        this.schedules[i].processStatus=status;
-      }
-    }
-  }
-=======
->>>>>>> parent of e42ac13... Adding changes to insert schedule to multiple drivers
 }
