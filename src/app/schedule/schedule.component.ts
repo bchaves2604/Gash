@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {Schedules} from '../model/schedule/grid-schedule-mock';
 import {UserService} from '../user.service';
 import {Driver} from '../model/driver/driver';
+import {Truck} from '../model/truck/truck';
 import { ToastsManager } from 'ng2-toastr';
 import { $ } from 'protractor';
 
@@ -15,6 +16,7 @@ import { $ } from 'protractor';
 
 export class ScheduleComponent implements OnInit {
 
+  private trucks: Truck[];
   schedules= Schedules;
   private showErrorLabel: boolean=false;
   selectedTruck;
@@ -26,10 +28,16 @@ export class ScheduleComponent implements OnInit {
   }
 
   ngOnInit() {
+    let trucks = this.getTrucks();
     setTimeout(function(){
       location.reload();
      },300000);
   }
+
+  getTrucks(){
+    this.userService.getTrucks().subscribe(data => this.trucks = data);
+  }
+
   showSuccess() {
     this.toastr.success('Horario agregado exitosamente!', 'Exito');
   }
