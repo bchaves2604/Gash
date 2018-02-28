@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { catchError, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { Schedule } from './model/schedule/schedule';
+import {Truck} from './model/truck/truck'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,18 +18,23 @@ export class UserService {
   private addDriverUrl='/addDriver';
   private driversURL = '/getDrivers';
   private addScheduleUrl='/addSchedule';
+  private getTruckUrl='/getTrucks';
 
   constructor(private http: HttpClient) {
   }
 
   addDriver(driver: Driver): Observable <Driver>{
     return this.http.post<Driver>(rootUrl + this.addDriverUrl+'?'+'driverName='+driver.driverName+'&'+'nationalId='+driver.driverNationalId
-    + '&'+'birthDate='+ driver.driverBirthDate + '&' + 'telephoneNumber=' + driver.driverTelephoneNumber,  JSON.stringify(driver), httpOptions);
+    + '&'+'birthDate='+ driver.driverBirthDate + '&' + 'telephoneNumber=' + driver.driverTelephoneNumber +'&'+ 'truckId=' + driver.truckId,  JSON.stringify(driver), httpOptions);
   }
 
   getDrivers(): Observable<Driver[]> {
     return this.http.get<Driver[]>(rootUrl + this.driversURL);
   }
+
+  getTrucks(): Observable<Truck[]> {
+	    return this.http.get<Truck[]>(rootUrl + this.getTruckUrl);
+	  }
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -45,12 +51,12 @@ export class UserService {
   }
 
   addSchedule(schedule: Schedule, selectedOption): Observable <Schedule>{
-    console.log(schedule.mondayOut); 
+    console.log(schedule.mondayOut);
     return this.http.post<Schedule>(rootUrl + this.addScheduleUrl+'?'+'mondayEntrance='+schedule.mondayEntrance+'&'+'tuesdayEntrance='+schedule.tuesdayEntrance
     +'&'+'wednesdayEntrance='+schedule.wednesdayEntrance +'&'+ 'thursdayEntrance='+schedule.thursdayEntrance+'&'+'fridayEntrance='+ schedule.fridayEntrance+'&'
     +'saturdayEntrance=' + schedule.saturdayEntrance + '&'+ 'sundayEntrance='+ schedule.sundayEntrance+'&'+'mondayOut='+schedule.mondayOut+'&'+'tuesdayOut='+
     schedule.tuesdayOut +'&'+'wednesdayOut='+schedule.wednesdayOut +'&'+ 'thursdayOut='+schedule.thursdayOut+'&'+'fridayOut='+ schedule.fridayOut+'&'
     +'saturdayOut=' + schedule.saturdayOut + '&'+ 'sundayOut='+ schedule.sundayOut + '&'+'driverId='+selectedOption
-    ,  JSON.stringify(schedule), httpOptions);   
+    ,  JSON.stringify(schedule), httpOptions);
   }
 }
