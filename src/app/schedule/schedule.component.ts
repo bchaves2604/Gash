@@ -19,7 +19,7 @@ export class ScheduleComponent implements OnInit {
   private trucks: Truck[];
   schedules= Schedules;
   private showErrorLabel: boolean=false;
-  selectedValue;
+  selectedTruck;
 
   constructor(private userService: UserService, private toastr: ToastsManager,vcr: ViewContainerRef) {
     this.toastr.setRootViewContainerRef(vcr);
@@ -125,7 +125,7 @@ export class ScheduleComponent implements OnInit {
     }
 
     var diff= Math.abs(currentHour - entranceHour);
-    console.log(lastProcess);
+
     if(lastProcess<=30 && minutes>entranceMinutes && currentHour===entranceHour){
       //green
       return '#04B45F';
@@ -142,15 +142,15 @@ export class ScheduleComponent implements OnInit {
     }
   }
 
-  addDriver(driverName: string, driverNid: string, driverBirthDate: string, driverPhoneNumber: string){
-    console.log(this.selectedValue.truckId);
+  addDriver(driverName: string, driverNid: string, driverBirthDate: string, driverPhoneNumber: string, truckId: Number){
+    console.log(truckId);
     if(driverName!='' && driverNid!='' && driverBirthDate!='' && driverPhoneNumber!=''){
       let driver= new Driver();
       driver.driverName=driverName.trim();
       driver.driverNationalId=driverNid.trim();
       driver.driverBirthDate=driverBirthDate;
       driver.driverTelephoneNumber=driverPhoneNumber.trim();
-      driver.truckId = this.selectedValue.truckId;
+      driver.truckId = truckId;
       this.userService.addDriver(driver)
         .subscribe();
       this.showSuccess();

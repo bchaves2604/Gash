@@ -37,15 +37,16 @@
         <input #driverPhoneNumber class="form-control" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
         <label>Camión</label>
         <br>
-        <select [(ngModel)]="selectedValue">
-          <option value="default">Seleccione un camión</option>
-          <option *ngFor="let truck of trucks" [ngValue]="truck">{{truck.truckNumber}} : {{truck.truckMake}} </option>
+        <select #selectedTruck>
+          <option disabled hidden>Seleccione un camión</option>
+          <option *ngFor="let truck of trucks" value={{truck.truckId}}>{{truck.truckNumber}} : {{truck.truckMake}} </option>
         </select>
+        <div class="modal-footer">
+          <button class="btn btn-default btn-search" data-dismiss="modal" (click)="addDriver(driverName.value, driverNid.value, driverBirthDate.value, driverPhoneNumber.value, selectedTruck.value);
+          driverName.value=''; driverNid.value=''; driverPhoneNumber.value='';">Agregar</button>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-default btn-search" data-dismiss="modal" (click)="addDriver(driverName.value, driverNid.value,driverBirthDate.value,driverPhoneNumber.value);
-        driverName.value=''; driverNid.value='';driverPhoneNumber.value='';" >Agregar</button>
-      </div>
+
     </div>
   </div>
 </div>
