@@ -15,7 +15,7 @@ import {Schedule} from '../model/schedule/schedule';
 })
 export class CreateScheduleComponent implements OnInit {
 
-  private drivers: Driver[];
+  drivers: Driver[];
   selectedOption;
   private emptySchedule: string;
   private show: boolean=false;
@@ -62,12 +62,14 @@ export class CreateScheduleComponent implements OnInit {
         schedule.saturdayOut=saturdayOut;
         schedule.sundayOut=sundayOut;
         console.log('selectedOption: '+this.selectedOption);
-        if(this.selectedOption!='default' && this.selectedOption!=undefined){
-          this.selectedOption =this.getSubstring(this.selectedOption);
-          this.userService.addSchedule(schedule,this.selectedOption)
-        .subscribe();
-        this.showSuccess();
-        this.selectedOption=undefined;
+        var selectedDrivers: Driver[]=this.getDriversSelected();
+        var i;
+        if(this.isDriverSelected()){
+          for(i=0; i <selectedDrivers.length; i++){
+            this.userService.addSchedule(schedule,selectedDrivers[i].driverId)
+            .subscribe();
+          }
+          this.showSuccess();
         }
         else{
           this.showError();
@@ -105,6 +107,26 @@ export class CreateScheduleComponent implements OnInit {
     for (var i = 0; i < this.drivers.length; i++) {
       this.drivers[i].selected = !this.drivers[i].selected;
     }
+  }
+  isDriverSelected(): boolean{
+    var i;
+    for(i=0;i<this.drivers.length;i++){
+      if(this.drivers[i].selected){
+        return true;
+      }
+    }
+    return false;
+  }
+    
+  getDriversSelected(): Driver[]{
+    var selectedDrivers: Driver[]=[];
+    var i;
+    for(i=0;i<this.drivers.length;i++){
+      if(this.drivers[i].selected){
+        selectedDrivers.push(this.drivers[i]);
+      }
+    }
+    return selectedDrivers;
   }
 }
 

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {Schedules} from '../model/schedule/grid-schedule-mock';
 import {UserService} from '../user.service';
 import {Driver} from '../model/driver/driver';
+import {Truck} from '../model/truck/truck';
 import { ToastsManager } from 'ng2-toastr';
 import { $ } from 'protractor';
 
@@ -15,21 +16,26 @@ import { $ } from 'protractor';
 
 export class ScheduleComponent implements OnInit {
 
+  private trucks: Truck[];
   schedules= Schedules;
   private showErrorLabel: boolean=false;
-  selectedTruck;
-  statusList= ['Ingreso a Terminal','Orden de Alistado', 'Orden de Despacho','Salida de Terminal'];
-
+  
 
   constructor(private userService: UserService, private toastr: ToastsManager,vcr: ViewContainerRef) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 
   ngOnInit() {
+    let trucks = this.getTrucks();
     setTimeout(function(){
       location.reload();
      },300000);
   }
+
+  getTrucks(){
+    this.userService.getTrucks().subscribe(data => this.trucks = data);
+  }
+
   showSuccess() {
     this.toastr.success('Horario agregado exitosamente!', 'Exito');
   }
@@ -109,7 +115,7 @@ export class ScheduleComponent implements OnInit {
     {
       entranceHour=parseInt(entranceHour) -12;
     }
-
+  
     if(currentHour > entranceHour){
       lastProcess=minutes+(60-entranceMinutes);
 
@@ -117,8 +123,8 @@ export class ScheduleComponent implements OnInit {
     else{
       lastProcess= Math.abs(minutes-entranceMinutes);
     }
-
-    var diff= Math.abs(currentHour - entranceHour);
+    
+    var diff= Math.abs(currentHour - entranceHour); 
     console.log(lastProcess);
     if(lastProcess<=30 && minutes>entranceMinutes && currentHour===entranceHour){
       //green
@@ -136,15 +142,14 @@ export class ScheduleComponent implements OnInit {
     }
   }
 
-  addDriver(driverName: string, driverNid: string, driverBirthDate: string, driverPhoneNumber: string, truckId: Number){
-    console.log(truckId);
+  addDriver(driverName: string, driverNid: string, driverBirthDate: string, driverPhoneNumber: string){
     if(driverName!='' && driverNid!='' && driverBirthDate!='' && driverPhoneNumber!=''){
       let driver= new Driver();
       driver.driverName=driverName.trim();
       driver.driverNationalId=driverNid.trim();
       driver.driverBirthDate=driverBirthDate;
       driver.driverTelephoneNumber=driverPhoneNumber.trim();
-      driver.truckId = truckId;
+      //driver.truckId = this.selectedValue.truckId;
       this.userService.addDriver(driver)
         .subscribe();
       this.showSuccess();
@@ -154,29 +159,6 @@ export class ScheduleComponent implements OnInit {
       this.showError();
     }
 
-  }
-
-  changeStatus(id,status){
-    var i;
-    for(i=0;i< this.statusList.length;i++){
-      if(this.statusList[i]===status){
-        if(i+1<this.statusList.length){
-          this.searchScheduleGrid(id,this.statusList[i+1]);
-          return;
-        }
-        else{
-          this.searchScheduleGrid(id, this.statusList[0]);
-          return;
-        }
-      }
-    }
-  }
-  searchScheduleGrid(id,status){
-    var i;
-    for(i=0;i<this.schedules.length;i++){
-      if(this.schedules[i].id===id){
-        this.schedules[i].processStatus=status;
-      }
-    }
+    
   }
 }
