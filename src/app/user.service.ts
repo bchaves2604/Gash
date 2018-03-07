@@ -6,6 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { Schedule } from './model/schedule/schedule';
 import {Truck} from './model/truck/truck'
+import { Monitoring } from './model/monitoring/Monitoring';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,6 +20,7 @@ export class UserService {
   private driversURL = '/getDrivers';
   private addScheduleUrl='/addSchedule';
   private getTruckUrl='/getTrucks';
+  private getMonitoringsUrl='/getMonitoring';
 
   constructor(private http: HttpClient) {
   }
@@ -51,12 +53,15 @@ export class UserService {
   }
 
   addSchedule(schedule: Schedule, selectedOption): Observable <Schedule>{
-    console.log(schedule.mondayOut);
     return this.http.post<Schedule>(rootUrl + this.addScheduleUrl+'?'+'mondayEntrance='+schedule.mondayEntrance+'&'+'tuesdayEntrance='+schedule.tuesdayEntrance
     +'&'+'wednesdayEntrance='+schedule.wednesdayEntrance +'&'+ 'thursdayEntrance='+schedule.thursdayEntrance+'&'+'fridayEntrance='+ schedule.fridayEntrance+'&'
     +'saturdayEntrance=' + schedule.saturdayEntrance + '&'+ 'sundayEntrance='+ schedule.sundayEntrance+'&'+'mondayOut='+schedule.mondayOut+'&'+'tuesdayOut='+
     schedule.tuesdayOut +'&'+'wednesdayOut='+schedule.wednesdayOut +'&'+ 'thursdayOut='+schedule.thursdayOut+'&'+'fridayOut='+ schedule.fridayOut+'&'
     +'saturdayOut=' + schedule.saturdayOut + '&'+ 'sundayOut='+ schedule.sundayOut + '&'+'driverId='+selectedOption
     ,  JSON.stringify(schedule), httpOptions);
+  } 
+
+  getMonitorings(): Observable<Monitoring[]>{
+    return this.http.get<Monitoring[]>(rootUrl+this.getMonitoringsUrl);
   }
 }

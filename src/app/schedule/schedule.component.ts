@@ -6,6 +6,7 @@ import {Driver} from '../model/driver/driver';
 import {Truck} from '../model/truck/truck';
 import { ToastsManager } from 'ng2-toastr';
 import { $ } from 'protractor';
+import { Monitoring } from '../model/monitoring/Monitoring';
 
 @Component({
   selector: 'app-schedule',
@@ -18,6 +19,8 @@ export class ScheduleComponent implements OnInit {
 
   private trucks: Truck[];
   schedules= Schedules;
+  private monitorings: Monitoring[];
+  
   private showErrorLabel: boolean=false;
   selectedTruck;
   statusList= ['Ingreso a Terminal','Orden de Alistado', 'Orden de Despacho','Salida de Terminal'];
@@ -29,6 +32,7 @@ export class ScheduleComponent implements OnInit {
 
   ngOnInit() {
     let trucks = this.getTrucks();
+    let monitorings = this.getMonitorings();
     setTimeout(function(){
       location.reload();
      },300000);
@@ -120,15 +124,13 @@ export class ScheduleComponent implements OnInit {
 
     if(currentHour > entranceHour){
       lastProcess=minutes+(60-entranceMinutes);
-
     }
     else{
       lastProcess= Math.abs(minutes-entranceMinutes);
     }
 
     var diff= Math.abs(currentHour - entranceHour);
-    console.log(lastProcess);
-    if(lastProcess<=30 && minutes>entranceMinutes && currentHour===entranceHour){
+    if(lastProcess<=30 && minutes>entranceMinutes && currentHour==entranceHour){
       //green
       return '#04B45F';
     }
@@ -138,14 +140,14 @@ export class ScheduleComponent implements OnInit {
       return '#F4FA58';
     }
 
-    else if(lastProcess>60 && diff>=1){
+    
+    else if(currentHour>=entranceHour&& diff>=1){
       //red
       return '#FE2E2E';
     }
   }
 
   addDriver(driverName: string, driverNid: string, driverBirthDate: string, driverPhoneNumber: string, truckId: Number){
-    console.log(truckId);
     if(driverName!='' && driverNid!='' && driverBirthDate!='' && driverPhoneNumber!=''){
       let driver= new Driver();
       driver.driverName=driverName.trim();
@@ -185,6 +187,21 @@ export class ScheduleComponent implements OnInit {
       if(this.schedules[i].id===id){
         this.schedules[i].processStatus=status;
       }
+    }
+  }
+
+  getMonitorings(){
+    this.userService.getMonitorings().subscribe(data => this.monitorings = data);
+  }
+
+  checkDayOfWeek(dayNumber): boolean{
+    var currentDate = new Date();
+    var currentDay = currentDate.getDay();
+    if(dayNumber===currentDay){
+      return true;
+    }
+    else{
+      return false;
     }
   }
 }
