@@ -20,7 +20,7 @@ export class ScheduleComponent implements OnInit {
   private trucks: Truck[];
   schedules= Schedules;
   private monitorings: Monitoring[];
-  
+
   private showErrorLabel: boolean=false;
   selectedTruck;
   statusList= ['Ingreso a Terminal','Orden de Alistado', 'Orden de Despacho','Salida de Terminal'];
@@ -140,7 +140,7 @@ export class ScheduleComponent implements OnInit {
       return '#F4FA58';
     }
 
-    
+
     else if(currentHour>=entranceHour&& diff>=1){
       //red
       return '#FE2E2E';
@@ -158,7 +158,6 @@ export class ScheduleComponent implements OnInit {
       this.userService.addDriver(driver)
         .subscribe();
       this.showSuccess();
-
     }
     else{
       this.showError();
